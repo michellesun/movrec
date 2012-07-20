@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block body %}
+{{entries}}
+
+<div class="your_movies"> 
+
+<form action="{{ url_for('search_movie') }}" method='POST'> 
+    <input type=text size=45 name="search">
+    <input type="Submit" value="Search" class="button">
+</form> 
+
+  <h3> Your Recent Movies </h3> 
+  <!-- CALL THE FUNCTION GET_MY_MOVIES -->
+
+
+  <ul>
+  {% for detail in details %}
+    <li> <a href="{{ detail['imdb_url']}}"> {{ detail['title'] }} </a>, 
+      {{ detail['genres'][0]}}/{{detail['genres'][1]}}</li>
+  {% endfor %}
+  </ul>
+
+  <p> 
+    <a href=""> Check out some awesome recommendations just for YOU! </a>
+  </p>
+  <p> 
+    <a href=""> Check out the top movies of all times! </a>
+  </p>
+
+</div>
+
+
+
+{% endblock %}
+
